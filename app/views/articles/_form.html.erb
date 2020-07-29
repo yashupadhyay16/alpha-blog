@@ -1,25 +1,31 @@
-<% if @article.errors.any? %>
-    <h2> Errors</h2>
-        <% @article.errors.full_messages.each do |message| %>        
-           <li> <%= message %> </li>
-        <% end %>        
-    </h2>   
-<% end %>
-<%= form_with(model: @article, local: true )  do |f| %>
+<div class="container">
 
-    <p> 
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </p>
-    
-    <p>
-        <%=f.label :desciption %> <br/>
-        <%=f.text_area :description %>
-    </p>
-    <p>
-        <%=f.submit %>
-    </p>
     
 
-
-<% end %>
+<div class="row justify-content-center">
+    <div class="col-10">
+        <%= render 'shared/error' %>
+        <%= form_with(model: @article,class: "shadow p-3 mb-3 bg-info rounded", local: true )  do |f| %>
+        <div class="form-group row">
+            <%= f.label :title, class:"col-2 col-form-label text-light" %> <br/>
+            <div class="col-10">
+                <%= f.text_field :title, class:"form-control shadow rounded", placeholder:"TItle of article" %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <%=f.label :desciption, class:"col-2 col-from-label text-light" %> 
+            <div class="col-10">
+                <%=f.text_area :description,rows:10, class:"form-control shadow rounded",placeholder: "Description" %>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">   
+            <%=f.submit class:"btn btn-outline-light btn-lg" %>
+        </div>
+ 
+        <% end %>
+        </div>
+        <div class="mb-3">
+            <%= link_to '[Go to All Articles]', articles_path %>
+        </div>
+    </div>
+</div>
