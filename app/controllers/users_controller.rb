@@ -29,7 +29,10 @@ class UsersController < ApplicationController
     end 
     def show
         @articles = @user.articles
-    end   
+    end 
+    def index
+       @users = User.all 
+    end
 
     private
     
