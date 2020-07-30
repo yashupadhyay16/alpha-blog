@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     
+    before_action :set_user,only: [:edit, :update]
     def new
         @user = User.new
     end 
@@ -12,6 +13,19 @@ class UsersController < ApplicationController
         else
             render 'new'
         end
+    end  
+    
+    def edit
+        
+    end
+
+    def update
+        if @user.update(user_params)
+            flash[:notice] = "your account updated"
+            redirect_to article_path
+        else
+            render 'edit'
+        end        
     end    
 
     private
@@ -21,6 +35,9 @@ class UsersController < ApplicationController
         params.require(:user).permit( :username, :email, :password)
     
     end 
+    def set_user
+        @user = User.find(params[:id])
+    end    
        
 
 end    
