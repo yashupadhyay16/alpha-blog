@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         end        
     end 
     def show
-        
+        @articles = @user.articles
     end   
 
     private
