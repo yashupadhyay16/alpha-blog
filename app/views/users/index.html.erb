@@ -20,7 +20,9 @@
                     <%= pluralize(user.articles.count, "article") %>
                 </p>
                 <%= link_to 'View profile', user ,class: "btn btn-outline-primary"%>
+                <% if logged_in? and user == current_user %>
                 <%= link_to'Edit profile',edit_user_path(user),class:"btn btn-outline-info"%> 
+                <%end%>
                 </div>
             <div class="card-footer text-muted">
                 <small>joined <%= time_ago_in_words(user.created_at) %> 
