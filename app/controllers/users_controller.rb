@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            flash[:notice] ="Welecome to the Alpha blog, you have successfylly signup"
+            flash[:notice] ="Welecome to the Alpha blog #{@user.username} you have successfylly signup"
             redirect_to articles_path
         else
             render 'new'
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
         session[:user_id] = nil if @user == current_user
-        flash[:notice]= "Account and article are deleted!"
+        flash[:alert]= "Account and article are deleted!"
         redirect_to root_path
 
     end    
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     
     def same_user
         if current_user != @user && !current_user.admin?
-            flash[:notice] = "You can only edit or delete your own profile"
+            flash[:alert] = "You can only edit or delete your own profile"
             redirect_to @user
         end    
     end   
