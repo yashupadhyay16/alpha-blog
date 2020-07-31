@@ -26,12 +26,12 @@
       <li>
       <% if logged_in?%>
       <li class="nav-item">
-        <%= link_to current_user.username, user_path(current_user), class: "nav-lin" %>
+        <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
         
       </li>
       
       <li class="nav-item">
-        <%= link_to 'Logout', logout_path, class: "nav-lin" , method: :delete%>
+        <%= link_to 'Logout', logout_path, class: "nav-link" , method: :delete%>
         
       </li>
       <% else %>
