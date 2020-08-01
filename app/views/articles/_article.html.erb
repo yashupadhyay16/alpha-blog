@@ -5,7 +5,10 @@
         <div class="card text-center shadow  mb-5 bg-white rounded">
             <div class="card-header font-italic">
               <% if article.user %>
-                by <%= link_to article.user.username , user_path(article.user) %>  
+                    by <%= link_to article.user.username , user_path(article.user) %>  
+                    <% if article.categories.any?%>
+                        <div class="mt-2"><%= render article.categories  %> </div>
+                    <%end%>
                 <% end %>
             </div>
             <div class="card-body ">
